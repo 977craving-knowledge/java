@@ -6,51 +6,54 @@
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 
 public class HappyOrSad extends JFrame implements ActionListener {
 
-    private JButton happyButton, sadButton;
-    private JPanel panel;
+	private JButton happyButton, sadButton;
+	private JPanel panel;
 
-    private ImageIcon happyImage, sadImage;
+	private ImageIcon happyImage, sadImage;
 
-    public static void main(String[] args) {
-        HappyOrSad demo = new HappyOrSad();
-        demo.setSize(175,175);
-        demo.createGUI();
-        demo.setVisible(true);
-    }
+	public static void main(String[] args) {
+		HappyOrSad demo = new HappyOrSad();
+		demo.setSize(180, 250);
+		demo.createGUI();
+		demo.setVisible(true);
+	}
 
-    private void createGUI() {
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
-        Container window = getContentPane();
-        window.setLayout(new FlowLayout());
+	private void createGUI() {
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		Container window = getContentPane();
+		window.setLayout(new FlowLayout());
 
-        panel = new JPanel();
-        panel.setPreferredSize(new Dimension(100, 100));
-        panel.setBackground(Color.white);
-        window.add(panel);
+		panel = new JPanel();
+		panel.setPreferredSize(new Dimension(100, 100));
+		panel.setBackground(Color.white);
+		window.add(panel);
 
-        happyButton = new JButton("happy");
-        window.add(happyButton);
-        happyButton.addActionListener(this);
+		happyButton = new JButton("happy");
+		window.add(happyButton);
+		happyButton.addActionListener(this);
 
-        sadButton= new JButton("sad");
-        window.add(sadButton);
-        sadButton.addActionListener(this);
+		sadButton = new JButton("sad");
+		window.add(sadButton);
+		sadButton.addActionListener(this);
 
-        happyImage = new ImageIcon("happy.jpg");
-        sadImage = new ImageIcon("sad.jpg");
-    }
+		String path = "E://Selection/src/";
+		happyImage = new ImageIcon(path + "happy.jpg");
+		sadImage = new ImageIcon(path + "sad.jpg");
+	}
 
-    public void actionPerformed(ActionEvent event) {
-        Graphics paper = panel.getGraphics();
-        Object source = event.getSource();
-        if (source == happyButton) {
-            happyImage.paintIcon(this, paper, 0, 0);
-        }
-        else {
-            sadImage.paintIcon(this, paper, 0, 0);
-        }
-    }
+	public void actionPerformed(ActionEvent event) {
+		Graphics paper = panel.getGraphics();
+		Object source = event.getSource();
+		if (source == happyButton) {
+			happyImage.paintIcon(this, paper, 0, 0);
+		} else {
+			sadImage.paintIcon(this, paper, 0, 0);
+		}
+	}
+
 }
